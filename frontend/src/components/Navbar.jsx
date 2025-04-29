@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { HiOutlineHeart, HiOutlineShoppingCart } from "react-icons/hi2";
 import { IoSearchOutline } from "react-icons/io5";
-// import { HiOutlineUser } from "react-icons/hi";
+import { HiOutlineUser } from "react-icons/hi";
 
 import logoImg from "../assets/logo.png";
 import avatarImg from "../assets/avatar.png";
@@ -21,7 +21,7 @@ const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     // const cartItems = useSelector(state => state.cart.cartItems);
 
-    const currentUser = true;
+    const currentUser = false;
 
     // const handleLogOut = () => {
     //     logout()
@@ -80,7 +80,7 @@ const Navbar = () => {
                                         )
                                     }
                                 </> :
-                                <link to="/login"><HiOutlineHeart className="size-6" /></link>
+                                <Link to="/login"><HiOutlineUser className="size-6" /></Link>
 
 
 
