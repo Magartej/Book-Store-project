@@ -6,7 +6,7 @@ import { HiOutlineUser } from "react-icons/hi";
 import logoImg from "../assets/logo.png";
 import avatarImg from "../assets/avatar.png";
 import { useState } from "react";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 // import { useAuth } from "../context/AuthContext";
 
 const navigation = [
@@ -19,7 +19,7 @@ const navigation = [
 const Navbar = () => {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-    // const cartItems = useSelector(state => state.cart.cartItems);
+    const cartItems = useSelector(state => state.cart.cartItems);
 
     const currentUser = false;
 
@@ -120,9 +120,9 @@ const Navbar = () => {
                     <Link to="/cart" className="bg-primary p-1 sm:px-6 px-2 flex items-center rounded-sm">
                         <HiOutlineShoppingCart className='' />
                         {
-                            // cartItems.length > 0 ? <span className="text-sm font-semibold sm:ml-1">
-                            //     {cartItems.length}</span> : 
-                            <span className="text-sm font-semibold sm:ml-1">0</span>
+                            cartItems.length > 0 ? <span className="text-sm font-semibold sm:ml-1">
+                                {cartItems.length}</span> :
+                                <span className="text-sm font-semibold sm:ml-1">0</span>
                         }
 
 
