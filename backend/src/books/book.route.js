@@ -1,6 +1,7 @@
 const express = require('express');
 const Book = require('./book.model');
-// const { postABook, getAllBooks, getSingleBook, UpdateBook, deleteABook } = require('./book.controller');
+const { postABook, getAllBooks, getSingleBook, UpdateBook, deleteABook } = require('./book.controller');
+
 // const verifyAdminToken = require('../middleware/verifyAdminToken');
 const router = express.Router();
 
@@ -11,31 +12,19 @@ const router = express.Router();
 // delete = when delete something
 
 // post a book
-router.post("/create-book", async (req, res) => {
-    try {
-        const newBook = await Book({ ...req.body });
-        await newBook.save();
-        res.status(200).send({
-            message: "Book posted successfully",
-            book: newBook
-        })
-    }
-    catch (error) {
-        console.error("Error creating book", error);
-        res.status(500).send({ message: "Failed to create book" })
-    }
-})
+router.post("/create-book", postABook)
+
 
 // get all books
-// router.get("/", getAllBooks);
+router.get("/", getAllBooks);
 
 // single book endpoint
-// router.get("/:id", getSingleBook);
+router.get("/:id", getSingleBook);
 
 // update a book endpoint
-// router.put("/edit/:id", verifyAdminToken, UpdateBook);
+router.put("/edit/:id", UpdateBook);
 
-// router.delete("/:id", verifyAdminToken, deleteABook)
+router.delete("/:id", deleteABook)
 
 
 module.exports = router;
