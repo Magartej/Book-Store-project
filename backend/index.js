@@ -11,7 +11,7 @@ require("dotenv").config();
 // middleware
 app.use(express.json());
 app.use(cors({
-    origin: ["http://http://localhost:5173/"],
+    origin: ["http://localhost:5173"],
     credentials: true,
 }));
 
