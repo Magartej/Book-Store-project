@@ -10,6 +10,13 @@ import CheckoutPage from "../pages/books/CheckoutPage.jsx";
 import SingleBook from "../pages/books/SingleBooks.jsx";
 import OrderPage from "../pages/books/OrderPage.jsx";
 import PrivateRoute from "./PrivateRoute";
+import AdminLogin from "../components/AdminLogin.jsx";
+import AdminRoute from "./AdminRoute.jsx";
+import DashboardLayout from "../pages/dashboard/DashboardLayout.jsx";
+import Dashboard from "../pages/dashboard/Dashboard.jsx";
+import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks.jsx";
+import AddBook from "../pages/dashboard/addBook/AddBook.jsx";
+import UpdateBook from "../pages/dashboard/EditBook/UploadBook.jsx";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +57,42 @@ const router = createBrowserRouter([
             }
         ]
     },
+ {
+      path: "/admin",
+      element: <AdminLogin/>
+    },
+    {
+      path: "/dashboard",
+      element: <AdminRoute>
+        <DashboardLayout/>
+      </AdminRoute>,
+      children:[
+        {
+          path: "",
+          element: <AdminRoute>
+            <Dashboard/>
+            </AdminRoute>
+        },
+        {
+          path: "add-new-book",
+          element: <AdminRoute>
+            <AddBook/>
+          </AdminRoute>
+        },
+        {
+          path: "edit-book/:id",
+          element: <AdminRoute>
+            <UpdateBook/>
+          </AdminRoute>
+        },
+        {
+          path: "manage-books",
+          element: <AdminRoute>
+            <ManageBooks/>
+          </AdminRoute>
+        }
+      ]
+    }
 ]);
 
 export default router;
