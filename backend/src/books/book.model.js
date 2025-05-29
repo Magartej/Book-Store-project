@@ -29,6 +29,10 @@ const bookSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    purchaseCount: {
+        type: Number,
+        default: 0,
+    },
     createdAt: {
         type: Date,
         default: Date.now,

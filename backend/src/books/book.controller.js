@@ -104,6 +104,21 @@ const deleteBook = async (req, res) => {
   }
 };
 
+// Get recommended books based on purchase count
+const getRecommendedBooks = async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 10;
+    const recommendedBooks = await Book.find()
+      .sort({ purchaseCount: -1, createdAt: -1 })
+      .limit(limit);
+    
+    res.status(200).send(recommendedBooks);
+  } catch (error) {
+    console.error("Error fetching recommended books", error);
+    res.status(500).send({ message: "Failed to fetch recommended books" });
+  }
+};
+
 module.exports = {
   createBook,
   getAllBooks,
@@ -111,4 +126,5 @@ module.exports = {
   updateBook,
   deleteBook,
   searchBooks,
+  getRecommendedBooks,
 };

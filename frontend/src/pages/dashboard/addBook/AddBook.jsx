@@ -23,7 +23,6 @@ const AddBook = () => {
 
     try {
       await addBook(newBookData).unwrap();
-      console.log(error);
       Swal.fire({
         title: "Book added",
         text: "Your book is uploaded successfully!",

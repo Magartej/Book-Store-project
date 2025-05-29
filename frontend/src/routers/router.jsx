@@ -16,8 +16,14 @@ import Dashboard from "../pages/dashboard/Dashboard.jsx";
 import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks.jsx";
 import AddBook from "../pages/dashboard/addBook/AddBook.jsx";
 import UpdateBook from "../pages/dashboard/EditBook/UploadBook.jsx";
+import ManageOrders from "../pages/dashboard/manageOrders/ManageOrders.jsx";
 import Favorites from "../pages/dashboard/Favorites/favorites.jsx";
 import SearchResults from "../pages/books/SearchResults.jsx";
+import AllBooks from "../pages/books/AllBooks.jsx";
+import Copyright from "../pages/Copyright.jsx";
+import About from "../pages/About.jsx";
+import Terms from "../pages/Terms.jsx";
+import Privacy from "../pages/Privacy.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,14 +44,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <h1>about</h1>,
+        element: <About />,
       },
       {
         path: "/login",
         element: <Login />,
       },
       {
-        path: "/register",
+        path: "/signup",
         element: <Register />,
       },
       {
@@ -55,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <CheckoutPage />,
+      },
+      {
+        path: "/books",
+        element: <AllBooks />,
       },
       {
         path: "/books/:id",
@@ -67,6 +77,18 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchResults />,
+      },
+      {
+        path: "/copyright",
+        element: <Copyright />,
+      },
+      {
+        path: "/terms",
+        element: <Terms />,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />,
       },
     ],
   },
@@ -111,6 +133,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageBooks />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-orders",
+        element: (
+          <AdminRoute>
+            <ManageOrders />
           </AdminRoute>
         ),
       },

@@ -34,6 +34,11 @@ const booksApi = createApi({
             providesTags: ["Books"]
         }),
 
+        fetchRecommendedBooks: builder.query({
+            query: (limit = 10) => `/recommended?limit=${limit}`,
+            providesTags: ["Books"]
+        }),
+
         addBook: builder.mutation({
             query: (newBook) => ({
                 url: `/create-book`,
@@ -68,6 +73,7 @@ const booksApi = createApi({
 export const { useFetchAllBooksQuery,
     useFetchBookByIdQuery,
     useSearchBooksQuery,
+    useFetchRecommendedBooksQuery,
     useAddBookMutation,
     useUpdateBookMutation,
     useDeleteBookMutation

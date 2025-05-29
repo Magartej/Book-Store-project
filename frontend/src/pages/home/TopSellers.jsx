@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import BookCard from '../books/BookCard';
+import SliderBookCard from './SliderBookCard';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,10 +11,11 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import './slider.css';
 import { useFetchAllBooksQuery } from '../../redux/features/books/booksApi';
 
 
-const categories = ["Choose a genre", "Business", "Fiction", "Horror", "Adventure"]
+const categories = ["Choose a genre", "Business", "Fiction", "Horror", "Adventure", "Love"]
 
 const TopSellers = () => {
 
@@ -42,41 +43,41 @@ const TopSellers = () => {
                 </select>
             </div>
 
-            <Swiper
-                slidesPerView={2}
-                spaceBetween={50}
-                navigation={true}
-                breakpoints={{
-                    640: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 30,
-                    },
-                    1024: {
-                        slidesPerView: 2,
-                        spaceBetween: 30,
-                    },
-                    1180: {
-                        slidesPerView: 2,
-                        spaceBetween: 30,
+            <div className="book-slider-container">
+                <Swiper
+                    slidesPerView={1}
+                    spaceBetween={30}
+                    navigation={true}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 1,
+                            spaceBetween: 30,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 40,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                        },
+                        1280: {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                        }
+                    }}
+                    modules={[Pagination, Navigation]}
+                    className="mySwiper"
+                >
+                    {
+                        filteredBooks.length > 0 && filteredBooks.map((book, index) => (
+                            <SwiperSlide key={index} className="h-auto">
+                                <SliderBookCard book={book} />
+                            </SwiperSlide>
+                        ))
                     }
-                }}
-                modules={[Pagination, Navigation]}
-                className="mySwiper"
-            >
-
-                {
-                    filteredBooks.length > 0 && filteredBooks.map((book, index) => (
-                        <SwiperSlide key={index}>
-                            <BookCard book={book} />
-                        </SwiperSlide>
-                    ))
-                }
-            </Swiper>
-
+                </Swiper>
+            </div>
 
         </div>
     )

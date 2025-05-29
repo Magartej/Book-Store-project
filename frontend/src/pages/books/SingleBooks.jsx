@@ -6,6 +6,7 @@ import { getImgUrl } from '../../utils/getImgUrl';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/features/cart/cartSlice';
 import { useFetchBookByIdQuery } from '../../redux/features/books/booksApi';
+import CopyrightNotice from '../../components/CopyrightNotice';
 
 const SingleBook = () => {
     const { id } = useParams();
@@ -46,8 +47,14 @@ const SingleBook = () => {
                 <button onClick={() => handleAddToCart(book)} className="btn-primary px-6 space-x-1 flex items-center gap-1 ">
                     <FiShoppingCart className="" />
                     <span>Add to Cart</span>
-
                 </button>
+                
+                <div className="mt-8 pt-4 border-t border-gray-200">
+                    <CopyrightNotice className="italic text-xs" />
+                    <p className="text-xs text-gray-500 mt-1">
+                        Book cover and description are property of the publisher or its content creators.
+                    </p>
+                </div>
             </div>
         </div>
     )

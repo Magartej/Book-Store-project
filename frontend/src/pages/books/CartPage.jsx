@@ -2,14 +2,14 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getImgUrl } from "../../utils/getImgUrl";
-import { clearCart, removeFromCart } from "../../redux/features/cart/cartSlice";
+import { clearCart, removeFromCart, incrementQuantity, decrementQuantity } from "../../redux/features/cart/cartSlice";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
 
   const totalPrice = cartItems
-    .reduce((acc, item) => acc + item.newPrice, 0)
+    .reduce((acc, item) => acc + (item.newPrice * (item.quantity || 1)), 0)
     .toFixed(2);
 
   const handleRemoveFromCart = (product) => {
@@ -19,6 +19,15 @@ const CartPage = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
+
+  const handleIncrement = (id) => {
+    dispatch(incrementQuantity(id));
+  };
+
+  const handleDecrement = (id) => {
+    dispatch(decrementQuantity(id));
+  };
+
   return (
     <>
       <div className="flex mt-12 h-full flex-col overflow-hidden bg-white shadow-xl">
@@ -66,9 +75,27 @@ const CartPage = () => {
                           </p>
                         </div>
                         <div className="flex flex-1 flex-wrap items-end justify-between space-y-2 text-sm">
-                          <p className="text-gray-500">
-                            <strong>Qty:</strong> 1
-                          </p>
+                          <div className="flex items-center">
+                            <span className="text-gray-500 mr-2">
+                              <strong>Qty:</strong>
+                            </span>
+                            <div className="flex items-center border border-gray-300 rounded">
+                              <button
+                                onClick={() => handleDecrement(product._id)}
+                                className="px-2 py-1 bg-gray-100 hover:bg-gray-200"
+                                disabled={product.quantity <= 1}
+                              >
+                                -
+                              </button>
+                              <span className="px-4 py-1">{product.quantity || 1}</span>
+                              <button
+                                onClick={() => handleIncrement(product._id)}
+                                className="px-2 py-1 bg-gray-100 hover:bg-gray-200"
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
 
                           <div className="flex">
                             <button
