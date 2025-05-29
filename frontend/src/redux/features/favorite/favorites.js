@@ -2,29 +2,29 @@ import { createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
 
 const initialState = {
-  cartItems: [],
+  items: [],
 };
 
-const cartSlice = createSlice({
-  name: "cart",
-  initialState: initialState,
+const favoritesSlice = createSlice({
+  name: "favorites",
+  initialState,
   reducers: {
-    addToCart: (state, action) => {
-      const existingItem = state.cartItems.find(
+    addToFavorites: (state, action) => {
+      const exists = state.items.find(
         (item) => item._id === action.payload._id
       );
-      if (!existingItem) {
-        state.cartItems.push(action.payload);
+      if (!exists) {
+        state.items.push(action.payload);
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Product Added to the Cart",
+          title: "Product Added to Favorites",
           showConfirmButton: false,
           timer: 1500,
         });
       } else
         Swal.fire({
-          title: "Already Added to the Cart",
+          title: "Already Added to the Favorites",
           text: "You won't be able to revert this!",
           icon: "warning",
           showCancelButton: true,
@@ -33,17 +33,17 @@ const cartSlice = createSlice({
           confirmButtonText: "OK!",
         });
     },
-    removeFromCart: (state, action) => {
-      state.cartItems = state.cartItems.filter(
+    removeFromFavorites: (state, action) => {
+      state.items = state.items.filter(
         (item) => item._id !== action.payload._id
       );
     },
-    clearCart: (state) => {
-      state.cartItems = [];
+    clearItem: (state) => {
+      state.items = [];
     },
   },
 });
 
-// export the actions
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
-export default cartSlice.reducer;
+export const { addToFavorites, removeFromFavorites, clearItem } =
+  favoritesSlice.actions;
+export default favoritesSlice.reducer;
