@@ -92,11 +92,11 @@ const Footer = () => {
                         <ul className="space-y-4">
                             <li className="flex items-start">
                                 <FaMapMarkerAlt className="text-gray-400 mr-3 mt-1" />
-                                <span className="text-gray-400">123 Book Street, Reading Avenue, Bookland, BK 12345</span>
+                                <span className="text-gray-400">Sunakothi-26, Lalitpur, Nepal</span>
                             </li>
                             <li className="flex items-center">
                                 <FaPhone className="text-gray-400 mr-3" />
-                                <a href="tel:+11234567890" className="text-gray-400 hover:text-white transition-colors duration-300">+1 (123) 456-7890</a>
+                                <a href="tel:+11234567890" className="text-gray-400 hover:text-white transition-colors duration-300">+977 9849533661</a>
                             </li>
                             <li className="flex items-center">
                                 <FaEnvelope className="text-gray-400 mr-3" />

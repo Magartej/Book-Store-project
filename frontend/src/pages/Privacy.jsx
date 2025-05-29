@@ -128,7 +128,11 @@ const Privacy = () => {
         <p className="mb-4 text-gray-700">
           If you have any questions about this Privacy Policy, please contact us at:
         </p>
-        <p className="text-gray-700">Email: <a href="mailto:privacy@bookstore.com" className="text-blue-600 hover:underline">privacy@bookstore.com</a></p>
+        <p className="text-gray-700">
+            Contact: +977 9849533661    
+            </p>
+            <p className='text-gray-700'>
+            Email: <a href="mailto:privacy@bookstore.com" className="text-blue-600 hover:underline">privacy@bookstore.com</a></p>
       </div>
       
       <div className="text-center mt-8">

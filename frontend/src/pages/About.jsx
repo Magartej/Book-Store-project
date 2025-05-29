@@ -26,7 +26,7 @@ const About = () => {
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-2/3">
             <p className="mb-4 text-gray-700 leading-relaxed">
-              BookStore began in 2020 as a small online retailer with a passion for books and a vision to create 
+              BookStore began in 2020 as a small website with a passion for books and a vision to create 
               a modern digital bookstore that offers the personal touch of a neighborhood bookshop.
             </p>
             <p className="mb-4 text-gray-700 leading-relaxed">
@@ -35,15 +35,15 @@ const About = () => {
               imaginative fiction.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Through our journey, we've remained committed to our founding principles: exceptional customer service, 
+              Through my journey, I've remained committed to my founding principles: exceptional customer service, 
               thoughtfully curated selections, and fostering a love of reading in our community.
             </p>
           </div>
           <div className="md:w-1/3 flex justify-center items-center">
             <div className="bg-gray-100 p-6 rounded-lg text-center">
-              <div className="text-5xl font-bold text-indigo-600 mb-2">5000+</div>
+              <div className="text-5xl font-bold text-indigo-600 mb-2">500+</div>
               <div className="text-gray-600">Books in our collection</div>
-              <div className="text-5xl font-bold text-indigo-600 mt-6 mb-2">10K+</div>
+              <div className="text-5xl font-bold text-indigo-600 mt-6 mb-2">1K+</div>
               <div className="text-gray-600">Happy customers</div>
             </div>
           </div>
@@ -56,19 +56,19 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center">
             <div className="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
-            <h3 className="font-semibold text-lg">Sarah Johnson</h3>
+            <h3 className="font-semibold text-lg">Tejendra Magar</h3>
             <p className="text-gray-600">Founder & CEO</p>
             <p className="text-sm text-gray-500 mt-2">Book lover with 15+ years in publishing</p>
           </div>
           <div className="text-center">
             <div className="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
-            <h3 className="font-semibold text-lg">Michael Chen</h3>
+            <h3 className="font-semibold text-lg">Deepak Rana</h3>
             <p className="text-gray-600">Head of Curation</p>
             <p className="text-sm text-gray-500 mt-2">Former librarian and literary critic</p>
           </div>
           <div className="text-center">
             <div className="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
-            <h3 className="font-semibold text-lg">Priya Patel</h3>
+            <h3 className="font-semibold text-lg">Susil Tamang</h3>
             <p className="text-gray-600">Customer Experience</p>
             <p className="text-sm text-gray-500 mt-2">Passionate about connecting readers with their perfect book</p>
           </div>
@@ -94,7 +94,7 @@ const About = () => {
           <div>
             <h3 className="font-semibold text-lg mb-2">Community</h3>
             <p className="text-gray-700">
-              We foster connections between readers, authors, and publishers to create a vibrant literary ecosystem.
+              We foster connections between readers, authors, and publishers to create a energetic literary ecosystem.
             </p>
           </div>
           <div>
@@ -116,8 +116,8 @@ const About = () => {
         <div className="flex flex-col md:flex-row justify-between gap-4">
           <div>
             <h3 className="font-semibold mb-2">Contact Information</h3>
-            <p className="text-gray-700">Email: <a href="mailto:contact@bookstore.com" className="text-indigo-600 hover:underline">contact@bookstore.com</a></p>
-            <p className="text-gray-700">Phone: (555) 123-4567</p>
+            <p className="text-gray-700">Email: <a href="magartej728@gmail.com" className="text-indigo-600 hover:underline">contact@bookstore.com</a></p>
+            <p className="text-gray-700">Phone: (+977) 9849533661</p>
           </div>
           <div>
             <Link to="/books" className="inline-block bg-indigo-600 text-white py-2 px-6 rounded-md hover:bg-indigo-700 transition-colors">

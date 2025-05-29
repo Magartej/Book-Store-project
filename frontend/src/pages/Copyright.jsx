@@ -53,9 +53,6 @@ const Copyright = () => {
           <li className="mb-2">A statement by you that you have a good-faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law</li>
           <li className="mb-2">A statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner's behalf</li>
         </ul>
-        <p className="mb-4">
-          Our copyright agent for notice of claims of copyright infringement on our site can be reached at: <a href="mailto:copyright@bookstore.com" className="text-blue-600 hover:underline">copyright@bookstore.com</a>
-        </p>
       </div>
     </div>
   );

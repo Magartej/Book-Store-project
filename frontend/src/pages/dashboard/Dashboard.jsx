@@ -74,14 +74,14 @@ const Dashboard = () => {
             totalUsers: 256,
             monthlyRevenue: 4280,
             recentOrders: [
-              { id: 'ORD-1234', customer: 'John Smith', date: '2 hours ago', status: 'Delivered', statusColor: 'bg-green-100 text-green-800' },
-              { id: 'ORD-1233', customer: 'Emily Johnson', date: '5 hours ago', status: 'Processing', statusColor: 'bg-blue-100 text-blue-800' },
-              { id: 'ORD-1232', customer: 'Michael Brown', date: '1 day ago', status: 'Shipped', statusColor: 'bg-purple-100 text-purple-800' },
-              { id: 'ORD-1231', customer: 'Sarah Wilson', date: '2 days ago', status: 'Delivered', statusColor: 'bg-green-100 text-green-800' },
+              { id: 'ORD-1234', customer: 'Susant Rai', date: '2 hours ago', status: 'Delivered', statusColor: 'bg-green-100 text-green-800' },
+              { id: 'ORD-1233', customer: 'Ram Khatri', date: '5 hours ago', status: 'Processing', statusColor: 'bg-blue-100 text-blue-800' },
+              { id: 'ORD-1232', customer: 'Deepak Rana', date: '1 day ago', status: 'Shipped', statusColor: 'bg-purple-100 text-purple-800' },
+              { id: 'ORD-1231', customer: 'Tejendra Magar', date: '2 days ago', status: 'Delivered', statusColor: 'bg-green-100 text-green-800' },
             ],
             recentBooks: [
-              { id: 'BK-789', title: 'The Great Adventure', date: '1 day ago', status: 'In Stock' },
-              { id: 'BK-788', title: 'Mystery of the Lost Key', date: '2 days ago', status: 'In Stock' },
+              { id: 'BK-789', title: 'Seto Dharti', date: '1 day ago', status: 'In Stock' },
+              { id: 'BK-788', title: 'Muna Madan', date: '2 days ago', status: 'In Stock' },
               { id: 'BK-787', title: 'Journey to the Stars', date: '3 days ago', status: 'Low Stock' },
             ]
           });
