@@ -1,6 +1,6 @@
 const Book = require("./book.model");
 
-const postABook = async (req, res) => {
+const createBook = async (req, res) => {
   try {
     const newBook = await Book({ ...req.body });
     await newBook.save();
@@ -24,12 +24,41 @@ const getAllBooks = async (req, res) => {
     res.status(500).send({ message: "Failed to fetch books" });
   }
 };
+
+// search books by query
+const searchBooks = async (req, res) => {
+  try {
+    const { query } = req.query;
+    
+    if (!query) {
+      return res.status(400).send({ message: "Search query is required" });
+    }
+
+    // Create a case-insensitive regex search pattern
+    const searchRegex = new RegExp(query, 'i');
+    
+    // Search in title, description, and category fields
+    const books = await Book.find({
+      $or: [
+        { title: { $regex: searchRegex } },
+        { description: { $regex: searchRegex } },
+        { category: { $regex: searchRegex } }
+      ]
+    }).sort({ createdAt: -1 });
+    
+    res.status(200).send(books);
+  } catch (error) {
+    console.error("Error searching books", error);
+    res.status(500).send({ message: "Failed to search books" });
+  }
+};
+
 const getSingleBook = async (req, res) => {
   try {
     const { id } = req.params;
     const book = await Book.findById(id);
     if (!book) {
-      res.status(404).send({ message: "Book not Found!" });
+      return res.status(404).send({ message: "Book not Found!" });
     }
     res.status(200).send(book);
   } catch (error) {
@@ -39,14 +68,14 @@ const getSingleBook = async (req, res) => {
 };
 
 //update a book data
-const UpdateBook = async (req, res) => {
+const updateBook = async (req, res) => {
   try {
     const { id } = req.params;
     const updatedBook = await Book.findByIdAndUpdate(id, req.body, {
       new: true,
     });
     if (!updatedBook) {
-      res.status(404).send({ message: "Book is not Found!" });
+      return res.status(404).send({ message: "Book not Found!" });
     }
     res.status(200).send({
       message: "Book updated successfully",
@@ -58,12 +87,12 @@ const UpdateBook = async (req, res) => {
   }
 };
 
-const deleteABook = async (req, res) => {
+const deleteBook = async (req, res) => {
   try {
     const { id } = req.params;
     const deletedBook = await Book.findByIdAndDelete(id);
     if (!deletedBook) {
-      res.status(404).send({ message: "Book is not Found!" });
+      return res.status(404).send({ message: "Book not Found!" });
     }
     res.status(200).send({
       message: "Book deleted successfully",
@@ -76,9 +105,10 @@ const deleteABook = async (req, res) => {
 };
 
 module.exports = {
-  postABook,
+  createBook,
   getAllBooks,
   getSingleBook,
-  UpdateBook,
-  deleteABook,
+  updateBook,
+  deleteBook,
+  searchBooks,
 };

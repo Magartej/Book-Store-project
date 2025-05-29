@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineHeart, HiOutlineShoppingCart } from "react-icons/hi2";
 import { IoSearchOutline } from "react-icons/io5";
 import { HiOutlineUser } from "react-icons/hi";
@@ -8,7 +8,6 @@ import avatarImg from "../assets/avatar.png";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useAuth } from "../context/AuthContex";
-// import { useAuth } from "../context/AuthContext";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
@@ -19,7 +18,9 @@ const navigation = [
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const navigate = useNavigate();
 
   const { currentUser, logout } = useAuth();
 
@@ -27,7 +28,13 @@ const Navbar = () => {
     logout();
   };
 
-  const token = localStorage.getItem("token");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery("");
+    }
+  };
 
   const favoriteItems = useSelector((state) => state.favorites.items);
 
@@ -41,18 +48,21 @@ const Navbar = () => {
           </Link>
 
           {/* search input */}
-          <div className="relative sm:w-72 w-40 space-x-2">
+          <form onSubmit={handleSearch} className="relative sm:w-72 w-40 space-x-2">
             <IoSearchOutline className="absolute inline-block left-3 inset-y-2" />
 
             <input
               type="text"
               placeholder="Search here"
               className="bg-[#EAEAEA] w-full py-1 md:px-8 px-6 rounded-md focus:outline-none"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-          </div>
+            <button type="submit" className="hidden">Search</button>
+          </form>
         </div>
 
-        {/* rigth side */}
+        {/* right side */}
         <div className="relative flex items-center md:space-x-3 space-x-2">
           <div>
             {currentUser ? (

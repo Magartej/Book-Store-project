@@ -17,6 +17,7 @@ import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks.jsx";
 import AddBook from "../pages/dashboard/addBook/AddBook.jsx";
 import UpdateBook from "../pages/dashboard/EditBook/UploadBook.jsx";
 import Favorites from "../pages/dashboard/Favorites/favorites.jsx";
+import SearchResults from "../pages/books/SearchResults.jsx";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "/favorites",
         element: <Favorites />,
+      },
+      {
+        path: "/search",
+        element: <SearchResults />,
       },
     ],
   },
