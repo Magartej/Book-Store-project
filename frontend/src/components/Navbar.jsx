@@ -23,9 +23,10 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const { currentUser, logout } = useAuth();
-  
+
   // Get username or email for display
-  const displayName = currentUser?.displayName || currentUser?.email?.split('@')[0] || "User";
+  const displayName =
+    currentUser?.displayName || currentUser?.email?.split("@")[0] || "User";
 
   // Handle scroll effect for navbar
   useEffect(() => {
@@ -37,15 +38,15 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Function to scroll to top
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -75,22 +76,46 @@ const Navbar = () => {
   const favoriteItems = useSelector((state) => state.favorites.items);
 
   return (
-    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-white'}`}>
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-md" : "bg-white"
+      }`}
+    >
       <div className="max-w-screen-2xl mx-auto px-4 py-3">
         <nav className="flex justify-between items-center">
           {/* Left side - Logo */}
           <div className="flex items-center">
             <Link to="/" onClick={scrollToTop} className="flex items-center">
               <img src={logoImg} alt="Books Heaven" className="h-10 w-auto" />
-              <span className="ml-2 text-xl font-bold text-gray-900 hidden sm:block">Books Heaven</span>
+              <span className="ml-2 text-xl font-bold text-gray-900 hidden sm:block">
+                Books Heaven
+              </span>
             </Link>
           </div>
 
           {/* Center - Navigation Links (Desktop) */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" onClick={scrollToTop} className="text-gray-900 hover:text-blue-600 font-medium transition-colors duration-200">Home</Link>
-            <Link to="/books" onClick={scrollToTop} className="text-gray-900 hover:text-blue-600 font-medium transition-colors duration-200">Books</Link>
-            <Link to="/about" onClick={scrollToTop} className="text-gray-900 hover:text-blue-600 font-medium transition-colors duration-200">About</Link>
+            <Link
+              to="/"
+              onClick={scrollToTop}
+              className="text-gray-900 hover:text-blue-600 font-medium transition-colors duration-200"
+            >
+              Home
+            </Link>
+            <Link
+              to="/books"
+              onClick={scrollToTop}
+              className="text-gray-900 hover:text-blue-600 font-medium transition-colors duration-200"
+            >
+              Books
+            </Link>
+            <Link
+              to="/about"
+              onClick={scrollToTop}
+              className="text-gray-900 hover:text-blue-600 font-medium transition-colors duration-200"
+            >
+              About
+            </Link>
           </div>
 
           {/* Right side - Search & Icons */}
@@ -107,13 +132,15 @@ const Navbar = () => {
                 />
                 <IoSearchOutline className="absolute left-3 text-gray-500 text-lg" />
               </div>
-              <button type="submit" className="hidden">Search</button>
+              <button type="submit" className="hidden">
+                Search
+              </button>
             </form>
 
             {/* Auth Buttons or User Menu */}
             {currentUser ? (
               <div className="relative">
-                <button 
+                <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="bg-gray-900 hover:bg-gray-00 text-white px-4 py-2 rounded-md transition-colors duration-200 flex items-center"
                   aria-label="User menu"
@@ -127,7 +154,9 @@ const Navbar = () => {
                     <div className="py-1">
                       {currentUser && (
                         <div className="px-4 py-2 border-b border-gray-100">
-                          <p className="text-sm font-medium text-gray-900 truncate">{currentUser.email}</p>
+                          <p className="text-sm font-medium text-gray-900 truncate">
+                            {currentUser.email}
+                          </p>
                         </div>
                       )}
                       <ul>
@@ -156,8 +185,8 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex items-center">
-                <Link 
-                  to="/login" 
+                <Link
+                  to="/login"
                   onClick={scrollToTop}
                   className="font-medium text-gray-900 hover:text-blue-600 transition-colors duration-200"
                 >
@@ -167,9 +196,9 @@ const Navbar = () => {
             )}
 
             {/* Favorites Icon */}
-            <Link 
-              to="/favorites" 
-              onClick={scrollToTop} 
+            <Link
+              to="/favorites"
+              onClick={scrollToTop}
               className="relative p-2 rounded-full hover:bg-gray-100 transition-colors duration-200 hidden sm:block"
               aria-label="Favorites"
             >
@@ -230,30 +259,42 @@ const Navbar = () => {
 
             {/* Mobile Nav Links */}
             <div className="flex flex-col space-y-2">
-              <Link 
-                to="/" 
-                onClick={() => {scrollToTop(); setIsMobileMenuOpen(false);}}
+              <Link
+                to="/"
+                onClick={() => {
+                  scrollToTop();
+                  setIsMobileMenuOpen(false);
+                }}
                 className="px-3 py-2 rounded-md text-gray-900 hover:bg-gray-100 transition-colors duration-200"
               >
                 Home
               </Link>
-              <Link 
-                to="/books" 
-                onClick={() => {scrollToTop(); setIsMobileMenuOpen(false);}}
+              <Link
+                to="/books"
+                onClick={() => {
+                  scrollToTop();
+                  setIsMobileMenuOpen(false);
+                }}
                 className="px-3 py-2 rounded-md text-gray-900 hover:bg-gray-100 transition-colors duration-200"
               >
                 Books
               </Link>
-              <Link 
-                to="/about" 
-                onClick={() => {scrollToTop(); setIsMobileMenuOpen(false);}}
+              <Link
+                to="/about"
+                onClick={() => {
+                  scrollToTop();
+                  setIsMobileMenuOpen(false);
+                }}
                 className="px-3 py-2 rounded-md text-gray-900 hover:bg-gray-100 transition-colors duration-200"
               >
                 About
               </Link>
-              <Link 
-                to="/favorites" 
-                onClick={() => {scrollToTop(); setIsMobileMenuOpen(false);}}
+              <Link
+                to="/favorites"
+                onClick={() => {
+                  scrollToTop();
+                  setIsMobileMenuOpen(false);
+                }}
                 className="px-3 py-2 rounded-md text-gray-900 hover:bg-gray-100 transition-colors duration-200 sm:hidden"
               >
                 Favorites
@@ -263,20 +304,23 @@ const Navbar = () => {
                   </span>
                 )}
               </Link>
-              
+
               {/* Mobile Auth Links */}
               {!currentUser && (
                 <div className="border-t border-gray-200 pt-2 mt-2">
-                  <Link 
-                    to="/login" 
-                    onClick={() => {scrollToTop(); setIsMobileMenuOpen(false);}}
+                  <Link
+                    to="/login"
+                    onClick={() => {
+                      scrollToTop();
+                      setIsMobileMenuOpen(false);
+                    }}
                     className="px-3 py-2 rounded-md text-gray-900 hover:bg-gray-100 transition-colors duration-200 block"
                   >
                     Log In
                   </Link>
                 </div>
               )}
-              
+
               {/* Mobile User Menu */}
               {currentUser && (
                 <div className="border-t border-gray-200 pt-2 mt-2">
@@ -284,17 +328,23 @@ const Navbar = () => {
                     Hello, {displayName}
                   </div>
                   {navigation.map((item) => (
-                    <Link 
+                    <Link
                       key={item.name}
-                      to={item.href} 
-                      onClick={() => {scrollToTop(); setIsMobileMenuOpen(false);}}
+                      to={item.href}
+                      onClick={() => {
+                        scrollToTop();
+                        setIsMobileMenuOpen(false);
+                      }}
                       className="px-3 py-2 rounded-md text-gray-900 hover:bg-gray-100 transition-colors duration-200 block"
                     >
                       {item.name}
                     </Link>
                   ))}
                   <button
-                    onClick={() => {handleLogOut(); setIsMobileMenuOpen(false);}}
+                    onClick={() => {
+                      handleLogOut();
+                      setIsMobileMenuOpen(false);
+                    }}
                     className="w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-gray-100 transition-colors duration-200 block"
                   >
                     Logout
