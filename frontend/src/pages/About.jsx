@@ -5,13 +5,13 @@ import CopyrightNotice from '../components/CopyrightNotice';
 const About = () => {
   return (
     <div className="container mx-auto px-4 py-12 max-w-5xl">
-      <h1 className="text-4xl font-bold mb-8 text-center">About BookStore</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">About Books Heaven</h1>
       
       {/* Mission Section */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-12">
         <h2 className="text-2xl font-semibold mb-4 text-indigo-700">Our Mission</h2>
         <p className="mb-4 text-gray-700 leading-relaxed">
-          At BookStore, our mission is to connect readers with the books they love and introduce them to new worlds they haven't yet discovered. 
+          At Books Heaven, our mission is to connect readers with the books they love and introduce them to new worlds they haven't yet discovered. 
           We believe that books have the power to transform lives, spark imagination, and foster empathy.
         </p>
         <p className="mb-4 text-gray-700 leading-relaxed">
@@ -26,7 +26,7 @@ const About = () => {
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-2/3">
             <p className="mb-4 text-gray-700 leading-relaxed">
-              BookStore began in 2020 as a small website with a passion for books and a vision to create 
+              Books Heaven began in 2020 as a small website with a passion for books and a vision to create 
               a modern digital bookstore that offers the personal touch of a neighborhood bookshop.
             </p>
             <p className="mb-4 text-gray-700 leading-relaxed">

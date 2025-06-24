@@ -105,7 +105,7 @@ const Dashboard = () => {
     <div className="space-y-6">
       {/* Welcome Section */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome to BookStore Admin</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome to Books Heaven Admin</h2>
         <p className="text-gray-600">
           Manage your books, orders, and more from this dashboard.
         </p>

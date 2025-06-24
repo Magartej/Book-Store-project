@@ -45,7 +45,7 @@ const SliderBookCard = ({ book }) => {
         
         <div className="mt-auto">
           <p className="font-medium mb-2 text-sm">
-            Rs {book?.newPrice}{" "}
+            <span className="text-black">Rs {book?.newPrice}</span>{" "}
             <span className="line-through font-normal ml-2 text-xs text-gray-500">
               Rs {book?.oldPrice}
             </span>

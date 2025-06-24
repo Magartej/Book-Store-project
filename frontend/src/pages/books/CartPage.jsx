@@ -1,12 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getImgUrl } from "../../utils/getImgUrl";
 import { clearCart, removeFromCart, incrementQuantity, decrementQuantity } from "../../redux/features/cart/cartSlice";
+import { useAuth } from "../../context/AuthContex";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
 
   const totalPrice = cartItems
     .reduce((acc, item) => acc + (item.newPrice * (item.quantity || 1)), 0)
@@ -26,6 +29,16 @@ const CartPage = () => {
 
   const handleDecrement = (id) => {
     dispatch(decrementQuantity(id));
+  };
+
+  // New: handle checkout with auth check
+  const handleCheckout = (e) => {
+    e.preventDefault();
+    if (currentUser) {
+      navigate("/checkout");
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -127,12 +140,12 @@ const CartPage = () => {
             Shipping and taxes calculated at checkout.
           </p>
           <div className="mt-6">
-            <Link
-              to="/checkout"
-              className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+            <button
+              onClick={handleCheckout}
+              className="w-full flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
             >
               Checkout
-            </Link>
+            </button>
           </div>
           <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
             <Link to="/">

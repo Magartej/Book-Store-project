@@ -109,6 +109,12 @@ const AddBook = () => {
           type="number"
           placeholder="Old Price"
           register={register}
+          validation={{
+            required: "Old Price is required",
+            min: { value: 1, message: "Price must be a positive number" },
+            pattern: { value: /^[0-9]+$/, message: "Only positive integers allowed" }
+          }}
+          error={errors.oldPrice}
         />
 
         {/* New Price */}
@@ -118,6 +124,12 @@ const AddBook = () => {
           type="number"
           placeholder="New Price"
           register={register}
+          validation={{
+            required: "New Price is required",
+            min: { value: 1, message: "Price must be a positive number" },
+            pattern: { value: /^[0-9]+$/, message: "Only positive integers allowed" }
+          }}
+          error={errors.newPrice}
         />
 
         {/* Cover Image Upload */}

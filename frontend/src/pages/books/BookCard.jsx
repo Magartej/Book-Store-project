@@ -19,53 +19,40 @@ const BookCard = ({ book }) => {
   };
 
   return (
-    <div className="rounded-lg transition-shadow duration-300">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:h-72 sm:justify-center gap-x-3">
-        <div className="sm:h-72 sm:flex-shrink-0 border rounded-md">
-          <Link to={`/books/${book._id}`}>
-            <img
-              src={getImgUrl(book?.coverImage)}
-              alt={book?.title}
-              className="w-full bg-cover p-5 rounded-md cursor-pointer hover:scale-105 transition-all duration-200"
-            />
-          </Link>
+    <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col h-full overflow-hidden">
+      <Link to={`/books/${book._id}`} className="block">
+        <img
+          src={getImgUrl(book?.coverImage)}
+          alt={book?.title}
+          className="w-full h-56 object-cover object-center rounded-t-xl hover:scale-105 transition-transform duration-200"
+        />
+      </Link>
+      <div className="p-5 flex flex-col flex-1">
+        <Link to={`/books/${book._id}`} className="text-lg font-bold text-gray-800 hover:text-blue-600 line-clamp-1 mb-1">
+          {book?.title}
+        </Link>
+        <p className="text-gray-600 text-sm mb-2 line-clamp-2">{book?.description}</p>
+        <div className="flex items-baseline gap-2 mb-4">
+          <span className="text-black font-bold text-lg">Rs {book?.newPrice}</span>
+          {book.oldPrice && book.oldPrice > book.newPrice && (
+            <span className="text-gray-400 line-through text-base">Rs {book.oldPrice}</span>
+          )}
         </div>
-
-        <div>
-          <Link to={`/books/${book._id}`}>
-            <h3 className="text-xl py-3 font-semibold hover:text-blue-600">
-              {book?.title}
-            </h3>
-          </Link>
-          <p className="text-gray-600">
-            {book?.description.length > 80
-              ? `${book.description.slice(0, 80)}...`
-              : book?.description}
-          </p>
-          <p className="font-medium mb-5">
-            Rs {book?.newPrice}{" "}
-            <span className="line-through font-normal ml-5">
-              Rs {book?.oldPrice}
-            </span>
-          </p>
-
-          <div className="flex gap-3">
-            <button
-              onClick={handleAddToCart}
-              className="btn-primary px-2 space-x-3 flex items-center"
-            >
-              <FiShoppingCart />
-              <span>Add to Cart</span>
-            </button>
-
-            <button
-              onClick={handleAddToFavorites}
-              className="btn-primary px-2 space-x-3 flex items-center"
-            >
-              <HiOutlineHeart />
-              <span>Favorite</span>
-            </button>
-          </div>
+        <div className="flex gap-2 mt-auto">
+          <button
+            onClick={handleAddToCart}
+            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-2 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+          >
+            <FiShoppingCart />
+            <span>Add to Cart</span>
+          </button>
+          <button
+            onClick={handleAddToFavorites}
+            className="flex-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-semibold px-3 py-2 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+          >
+            <HiOutlineHeart />
+            <span>Favorite</span>
+          </button>
         </div>
       </div>
     </div>

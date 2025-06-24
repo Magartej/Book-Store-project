@@ -23,10 +23,10 @@ const Footer = () => {
                     {/* Column 1 - About */}
                     <div>
                         <div className="mb-6">
-                            <img src={footerLogo} alt="BookStore" className="w-36" />
+                            <img src={footerLogo} alt="Books Heaven" className="w-36" />
                         </div>
                         <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-                            BookStore is your premier destination for books across all genres. 
+                            Books Heaven is your premier destination for books across all genres. 
                             Discover new authors, bestsellers, and rare finds all in one place.
                         </p>
                         <div className="flex space-x-4">
@@ -135,7 +135,7 @@ const Footer = () => {
                 {/* Copyright Section */}
                 <div className="border-t border-gray-800 pt-8 text-center">
                     <p className="text-gray-500">
-                        &copy; {currentYear} BookStore. All rights reserved.
+                        &copy; {currentYear} Books Heaven. All rights reserved.
                     </p>
                     <p className="text-gray-600 text-sm mt-2">
                         All book covers and content are copyright of their respective publishers and authors.

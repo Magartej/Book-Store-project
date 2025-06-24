@@ -81,8 +81,8 @@ const Navbar = () => {
           {/* Left side - Logo */}
           <div className="flex items-center">
             <Link to="/" onClick={scrollToTop} className="flex items-center">
-              <img src={logoImg} alt="BookStore" className="h-10 w-auto" />
-              <span className="ml-2 text-xl font-bold text-gray-900 hidden sm:block">BookStore</span>
+              <img src={logoImg} alt="Books Heaven" className="h-10 w-auto" />
+              <span className="ml-2 text-xl font-bold text-gray-900 hidden sm:block">Books Heaven</span>
             </Link>
           </div>
 
@@ -155,20 +155,13 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center">
                 <Link 
                   to="/login" 
                   onClick={scrollToTop}
                   className="font-medium text-gray-900 hover:text-blue-600 transition-colors duration-200"
                 >
                   LOG IN
-                </Link>
-                <Link 
-                  to="/signup" 
-                  onClick={scrollToTop}
-                  className="font-medium text-gray-900 border-2 border-gray-900 px-6 py-2 hover:bg-gray-900 hover:text-white transition-colors duration-200"
-                >
-                  SIGN UP
                 </Link>
               </div>
             )}
@@ -273,20 +266,13 @@ const Navbar = () => {
               
               {/* Mobile Auth Links */}
               {!currentUser && (
-                <div className="border-t border-gray-200 pt-2 mt-2 space-y-2">
+                <div className="border-t border-gray-200 pt-2 mt-2">
                   <Link 
                     to="/login" 
                     onClick={() => {scrollToTop(); setIsMobileMenuOpen(false);}}
                     className="px-3 py-2 rounded-md text-gray-900 hover:bg-gray-100 transition-colors duration-200 block"
                   >
                     Log In
-                  </Link>
-                  <Link 
-                    to="/signup" 
-                    onClick={() => {scrollToTop(); setIsMobileMenuOpen(false);}}
-                    className="px-3 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors duration-200 block text-center"
-                  >
-                    Sign Up
                   </Link>
                 </div>
               )}
