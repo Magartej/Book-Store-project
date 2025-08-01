@@ -45,7 +45,7 @@ const SingleBook = () => {
                         <p className="text-gray-600 mb-2"><span className="font-semibold">Published:</span> {new Date(book?.createdAt).toLocaleDateString()}</p>
                         <div className="flex items-baseline gap-3 mb-4">
                             <span className="text-2xl font-bold text-black">Rs {book.newPrice}</span>
-                            {book.oldPrice && book.oldPrice > book.newPrice && (
+                            {book.oldPrice !== null && book.oldPrice !== undefined && (
                                 <span className="text-lg text-gray-400 line-through">Rs {book.oldPrice}</span>
                             )}
                         </div>

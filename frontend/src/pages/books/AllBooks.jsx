@@ -48,9 +48,11 @@ const BookGridCard = ({ book }) => {
           <div className="mt-auto">
             <p className="font-medium mb-2 text-sm">
               <span className="text-black">Rs {book?.newPrice}</span>{" "}
-              <span className="line-through font-normal text-gray-500 ml-1 text-xs">
-                Rs {book?.oldPrice}
-              </span>
+              {book?.oldPrice !== null && book?.oldPrice !== undefined && (
+                <span className="line-through font-normal text-gray-500 ml-1 text-xs">
+                  Rs {book.oldPrice}
+                </span>
+              )}
             </p>
             
             <div className="flex gap-1">

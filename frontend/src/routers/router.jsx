@@ -8,22 +8,23 @@ import CartPage from "../pages/books/CartPage.jsx";
 import CheckoutPage from "../pages/books/CheckoutPage.jsx";
 import SingleBook from "../pages/books/SingleBooks.jsx";
 import OrderPage from "../pages/books/OrderPage.jsx";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "./Privateroute";
 import AdminLogin from "../components/AdminLogin.jsx";
 import AdminRoute from "./AdminRoute.jsx";
-import DashboardLayout from "../pages/dashboard/DashboardLayout.jsx";
-import Dashboard from "../pages/dashboard/Dashboard.jsx";
-import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks.jsx";
-import AddBook from "../pages/dashboard/addBook/AddBook.jsx";
-import UpdateBook from "../pages/dashboard/EditBook/UploadBook.jsx";
-import ManageOrders from "../pages/dashboard/manageOrders/ManageOrders.jsx";
-import Favorites from "../pages/dashboard/Favorites/favorites.jsx";
+import DashboardLayout from "../pages/admin/DashboardLayout.jsx";
+import Dashboard from "../pages/admin/Dashboard.jsx";
+import ManageBooks from "../pages/admin/manageBooks/ManageBooks.jsx";
+import AddBook from "../pages/admin/addBook/AddBook.jsx";
+import UpdateBook from "../pages/admin/EditBook/UploadBook.jsx";
+import ManageOrders from "../pages/admin/manageOrders/ManageOrders.jsx";
+import Favorites from "../pages/admin/Favorites/favorites.jsx";
 import SearchResults from "../pages/books/SearchResults.jsx";
 import AllBooks from "../pages/books/AllBooks.jsx";
 import Copyright from "../pages/Copyright.jsx";
 import About from "../pages/About.jsx";
 import Terms from "../pages/Terms.jsx";
 import Privacy from "../pages/Privacy.jsx";
+import Privateroute from "./Privateroute";
 
 const router = createBrowserRouter([
   {
@@ -37,9 +38,9 @@ const router = createBrowserRouter([
       {
         path: "/orders",
         element: (
-          <PrivateRoute>
+          <Privateroute>
             <OrderPage />
-          </PrivateRoute>
+          </Privateroute>
         ),
       },
       {

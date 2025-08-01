@@ -1,7 +1,9 @@
 const express = require("express");
 const User = require("./user.model");
 const jwt = require("jsonwebtoken");
-const { verifyToken, verifyAdmin } = require('../middleware/auth');
+const { verifyToken, verifyAdmin } = require("../middleware/auth");
+const express = require("express");
+const User = require("./user.model");
 
 const router = express.Router();
 
@@ -44,7 +46,7 @@ router.get("/verify-admin", verifyToken, async (req, res) => {
   try {
     // The verifyToken middleware already checked the token validity
     // Now check if the user is an admin
-    if (req.user && req.user.role === 'admin') {
+    if (req.user && req.user.role === "admin") {
       return res.status(200).json({ isAdmin: true });
     } else {
       return res.status(403).json({ isAdmin: false });
@@ -53,6 +55,34 @@ router.get("/verify-admin", verifyToken, async (req, res) => {
     console.error("Error verifying admin token", error);
     res.status(500).json({ message: "Internal server error" });
   }
+});
+
+// 🔐 LOGIN ROUTE
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+
+  if (!user || !(await user.comparePassword(password))) {
+    return res.status(401).json({ message: "Invalid credentials" });
+  }
+
+  req.session.regenerate((err) => {
+    if (err) return res.status(500).send("Session regeneration failed");
+
+    req.session.userId = user._id;
+    res
+      .status(200)
+      .json({ message: "Logged in successfully", user: { email: user.email } });
+  });
+});
+
+// 🚪 LOGOUT ROUTE
+router.post("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) return res.status(500).send("Logout failed");
+    res.clearCookie("sessionId");
+    res.status(200).send("Logged out");
+  });
 });
 
 module.exports = router;

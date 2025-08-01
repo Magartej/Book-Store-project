@@ -16,6 +16,10 @@ const AddBook = () => {
   const [addBook, { isLoading, isError }] = useAddBookMutation();
   const [imageFileName, setimageFileName] = useState("");
   const onSubmit = async (data) => {
+    // If oldPrice is empty, remove it or set to null
+    if (!data.oldPrice) {
+      delete data.oldPrice; // or: data.oldPrice = null;
+    }
     const newBookData = {
       ...data,
       coverImage: imageFileName,
@@ -107,12 +111,11 @@ const AddBook = () => {
           label="Old Price"
           name="oldPrice"
           type="number"
-          placeholder="Old Price"
+          placeholder="Old Price (optional)"
           register={register}
           validation={{
-            required: "Old Price is required",
             min: { value: 1, message: "Price must be a positive number" },
-            pattern: { value: /^[0-9]+$/, message: "Only positive integers allowed" }
+            pattern: { value: /^[0-9]*$/, message: "Only positive integers allowed" }
           }}
           error={errors.oldPrice}
         />

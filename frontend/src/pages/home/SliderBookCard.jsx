@@ -34,23 +34,41 @@ const SliderBookCard = ({ book }) => {
       {/* Content section */}
       <div className="flex-1 flex flex-col">
         <Link to={`/books/${book._id}`}>
-          <h3 className="text-base font-semibold hover:text-blue-600 mb-2 overflow-hidden text-ellipsis" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', minHeight: '2.5rem' }}>
+          <h3
+            className="text-base font-semibold hover:text-blue-600 mb-2 overflow-hidden text-ellipsis"
+            style={{
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              minHeight: "2.5rem",
+            }}
+          >
             {book?.title}
           </h3>
         </Link>
-        
-        <p className="text-gray-600 text-xs mb-2 overflow-hidden text-ellipsis" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', minHeight: '2rem' }}>
+
+        <p
+          className="text-gray-600 text-xs mb-2 overflow-hidden text-ellipsis"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            minHeight: "2rem",
+          }}
+        >
           {book?.description}
         </p>
-        
+
         <div className="mt-auto">
           <p className="font-medium mb-2 text-sm">
             <span className="text-black">Rs {book?.newPrice}</span>{" "}
-            <span className="line-through font-normal ml-2 text-xs text-gray-500">
-              Rs {book?.oldPrice}
-            </span>
+            {book?.oldPrice !== null && book?.oldPrice !== undefined && (
+              <span className="line-through font-normal ml-2 text-xs text-gray-500">
+                Rs {book.oldPrice}
+              </span>
+            )}
           </p>
-          
+
           <div className="flex gap-1">
             <button
               onClick={handleAddToCart}
@@ -59,7 +77,7 @@ const SliderBookCard = ({ book }) => {
               <FiShoppingCart className="mr-1" />
               <span>Add to Cart</span>
             </button>
-            
+
             <button
               onClick={handleAddToFavorites}
               className="btn-primary px-2 py-1 text-xs flex items-center justify-center"
@@ -73,4 +91,4 @@ const SliderBookCard = ({ book }) => {
   );
 };
 
-export default SliderBookCard; 
+export default SliderBookCard;
